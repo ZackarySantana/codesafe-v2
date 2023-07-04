@@ -3,7 +3,7 @@
     "type": "module",
     "version": "0.0.1",
     "scripts": {
-        "dev": "astro dev",
+        "dev": "sst bind astro dev",
         "start": "astro dev",
         "build": "astro build",
         "preview": "astro preview",
@@ -13,5 +13,11 @@
         "@astrojs/tailwind": "^4.0.0",
         "astro": "^2.7.3",
         "tailwindcss": "^3.3.2"
+    },
+    "devDependencies": {
+        "astro-sst": "^2.18.3",
+        "aws-cdk-lib": "^2.86.0",
+        "constructs": "^10.2.68",
+        "sst": "^2.18.3"
     }
 }

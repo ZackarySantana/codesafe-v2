@@ -8,7 +8,7 @@ export default function CelesteStack({ stack }: StackContext) {
         path: "celeste",
         bind: [api],
         environment: {
-            API_ENDPOINT: api.url,
+            API_URL: api.url,
         },
     });
     stack.addOutputs({
