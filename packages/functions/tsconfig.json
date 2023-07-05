@@ -5,7 +5,8 @@
         "moduleResolution": "node",
         "baseUrl": ".",
         "paths": {
-            "@lunar/core/*": ["../core/src/*"]
+            "@lunar/core/*": ["../core/src/*"],
+            "@lunar/database/*": ["../database/src/*"]
         }
     }
 }

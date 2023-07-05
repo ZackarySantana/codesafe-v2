@@ -1,6 +1,8 @@
 import { SSTConfig } from "sst";
 import API from "./stacks/MyStack";
+import Auth from "./stacks/authentication";
 import CelesteStack from "./stacks/celeste";
+import Database from "./stacks/database";
 
 export default {
     config() {
@@ -10,6 +12,8 @@ export default {
         };
     },
     stacks(app) {
+        app.stack(Database);
+        app.stack(Auth);
         app.stack(API);
         app.stack(CelesteStack);
     },

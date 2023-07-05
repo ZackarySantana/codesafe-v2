@@ -1,26 +1,26 @@
-{
-    "files": [
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.js",
-        "**/*.jsx",
-        "**/*.astro",
-        "**/*.mjs"
-    ],
-    "ignores": ["node_modules", "dist", "build", ".cache", ".git"],
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true
+module.exports = {
+    // Files: [
+    //     "**/*.ts",
+    //     "**/*.tsx",
+    //     "**/*.js",
+    //     "**/*.jsx",
+    //     "**/*.astro",
+    //     "**/*.mjs",
+    // ],
+    ignorePatterns: ["node_modules", "dist", "build", ".cache", ".git"],
+    env: {
+        browser: true,
+        es2021: true,
+        node: true,
     },
-    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-    "parser": "@typescript-eslint/*parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+    extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+    parser: "@typescript-eslint/parser",
+    plugins: ["@typescript-eslint"],
+    parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
     },
-    "plugins": ["@typescript-eslint"],
-    "rules": {
+    rules: {
         "array-callback-return": "error",
         "no-await-in-loop": "error",
         "no-cond-assign": ["error", "except-parens"],
@@ -34,16 +34,16 @@
         "no-use-before-define": "error",
         "use-isnan": "error",
         "require-atomic-updates": "error",
-        "camelcase": "error",
+        camelcase: "error",
         "capitalized-comments": "error",
         "class-methods-use-this": "error",
-        "complexity": ["error", 4],
-        "curly": ["error", "all"],
+        complexity: ["error", 4],
+        curly: ["error", "all"],
         "default-case": "error",
         "default-case-last": "error",
         "default-param-last": "error",
         "dot-notation": "error",
-        "eqeqeq": "error",
+        eqeqeq: "error",
         "func-names": "error",
         "max-depth": ["error", 4],
         "max-lines": ["error", 350],
@@ -56,9 +56,11 @@
         "no-empty-function": "error",
         "no-floating-decimal": "error",
         "no-implicit-coercion": "error",
-        "no-implicit-globals": "error"
+        "no-implicit-globals": "error",
     },
-    "linterOptions": {
-        "reportUnusedDisableDirectives": true
-    }
-}
+    /*
+     * LinterOptions: {
+     *     reportUnusedDisableDirectives: true,
+     * },
+     */
+};

@@ -3,9 +3,6 @@
     "compilerOptions": {
         "module": "esnext",
         "moduleResolution": "node",
-        "baseUrl": ".",
-        "paths": {
-            "@lunar/database/*": ["../database/src/*"]
-        }
+        "baseUrl": "."
     }
 }
