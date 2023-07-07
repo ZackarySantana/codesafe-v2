@@ -19,6 +19,7 @@ export function validateProperties<T extends string>(
                 },
             ];
         }
+        obj[property] = test[property];
     }
     return [obj, undefined];
 }
