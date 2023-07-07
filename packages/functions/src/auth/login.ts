@@ -1,15 +1,16 @@
+import ApiHandler from "@lunar/core/ApiHandler";
 import { ConnectToDatabase } from "@lunar/core/auth/connect";
 import { createJWT, login } from "@lunar/core/auth/user";
 import { validateLogin } from "@lunar/core/validate/login";
-import { ApiHandler } from "sst/node/api";
 
 const db = ConnectToDatabase();
 
-export const handler = ApiHandler(async (_evt) => {
+export const handler = ApiHandler(async (_evt, _, logger) => {
     const [loginCredentials, loginError] = validateLogin(_evt.body ?? "{}");
     if (loginError !== undefined) {
         return loginError;
     }
+    logger.debug("email", loginCredentials.email);
     const [user, authError] = await login(
         db,
         loginCredentials.email,
@@ -18,7 +19,11 @@ export const handler = ApiHandler(async (_evt) => {
     if (authError !== undefined) {
         return authError;
     }
-    const jwt = createJWT(user);
+    logger.debug("user", user);
+    const [jwt, jwtError] = createJWT(user);
+    if (jwtError !== undefined) {
+        return jwtError;
+    }
     return {
         statusCode: 200,
         body: jwt,

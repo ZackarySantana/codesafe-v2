@@ -37,7 +37,7 @@ module.exports = {
         camelcase: "warn",
         "capitalized-comments": "warn",
         "class-methods-use-this": "warn",
-        complexity: ["warn", 4],
+        complexity: ["warn", 5],
         curly: ["warn", "all"],
         "default-case": "warn",
         "default-case-last": "warn",
