@@ -1,7 +1,7 @@
 {
-    "name": "celeste",
+    "name": "@lunar/celeste",
+    "version": "0.0.0",
     "type": "module",
-    "version": "0.0.1",
     "scripts": {
         "dev": "sst bind astro dev",
         "start": "astro dev",
@@ -11,11 +11,11 @@
     },
     "dependencies": {
         "@astrojs/tailwind": "^4.0.0",
-        "astro": "^2.7.3",
+        "astro": "^2.8.0",
         "tailwindcss": "^3.3.2"
     },
     "devDependencies": {
-        "astro-sst": "^2.18.3",
+        "astro-sst": "^2.19.1",
         "aws-cdk-lib": "^2.86.0",
         "constructs": "^10.2.68",
         "sst": "^2.18.3"
