@@ -6,7 +6,7 @@ import {
     Updateable,
 } from "kysely";
 
-export interface UserTable {
+export type UserTable = {
     id: Generated<number>;
 
     email: string;

@@ -1,5 +1,5 @@
 import { UserTable } from "./schemas/user";
 
-export interface Database {
+export type Database = {
     user: UserTable;
-}
+};
