@@ -15,6 +15,14 @@ export async function up(db) {
             col.defaultTo(sql`now()`).notNull(),
         )
         .execute();
+
+    await db
+        .insertInto("user")
+        .values({
+            email: "test@test.com",
+            password: "test",
+        })
+        .execute();
 }
 
 /**
