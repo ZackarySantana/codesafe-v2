@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 import { ErrorResponse, LoginCredentials, ReturnOr } from "@lunar/types";
 import { validateProperties } from "./utils";
