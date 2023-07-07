@@ -6,7 +6,8 @@
         "baseUrl": ".",
         "paths": {
             "@lunar/core/*": ["../core/src/*"],
-            "@lunar/database/*": ["../database/src/*"]
+            "@lunar/database/*": ["../database/src/*"],
+            "@lunar/types": ["../types/src/index"]
         }
     }
 }

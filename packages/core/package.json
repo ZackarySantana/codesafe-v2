@@ -6,14 +6,16 @@
         "test": "sst bind vitest",
         "typecheck": "tsc -noEmit"
     },
-    "devDependencies": {
-        "@types/node": "^20.3.3",
-        "sst": "^2.18.3",
-        "vitest": "^0.32.4"
-    },
     "dependencies": {
         "aws-cdk-lib": "^2.86.0",
+        "bcrypt": "^5.1.0",
         "kysely": "^0.25.0",
+        "sst": "^2.18.3",
         "zod": "^3.21.4"
+    },
+    "devDependencies": {
+        "@types/bcrypt": "^5.0.0",
+        "@types/node": "^20.3.3",
+        "vitest": "^0.32.4"
     }
 }

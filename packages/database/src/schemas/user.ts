@@ -6,7 +6,7 @@ import {
     Updateable,
 } from "kysely";
 
-export interface PersonTable {
+export interface UserTable {
     id: Generated<number>;
 
     email: string;
@@ -15,6 +15,6 @@ export interface PersonTable {
     created_at: ColumnType<Date, string | undefined, never>;
 }
 
-export type Person = Selectable<PersonTable>;
-export type NewPerson = Insertable<PersonTable>;
-export type PersonUpdate = Updateable<PersonTable>;
+export type User = Selectable<UserTable>;
+export type NewUser = Insertable<UserTable>;
+export type UserUpdate = Updateable<UserTable>;

@@ -1,5 +1,5 @@
 {
-    "name": "@lunar/functions",
+    "name": "@lunar/types",
     "version": "0.0.0",
     "type": "module",
     "scripts": {
@@ -7,9 +7,7 @@
         "typecheck": "tsc -noEmit"
     },
     "dependencies": {
+        "vitest": "^0.32.4",
         "sst": "^2.18.3"
-    },
-    "devDependencies": {
-        "vitest": "^0.32.4"
     }
 }

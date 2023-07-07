@@ -1,5 +1,5 @@
-import { PersonTable } from "./schemas/user";
+import { UserTable } from "./schemas/user";
 
 export interface Database {
-    person: PersonTable;
+    user: UserTable;
 }

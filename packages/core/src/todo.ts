@@ -12,7 +12,7 @@ export const Events = {
 
 export async function create() {
     const id = crypto.randomUUID();
-    // write to database
+    // Write to database
 
     await Events.Created.publish({
         id,

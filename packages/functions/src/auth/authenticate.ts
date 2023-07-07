@@ -1,14 +1,16 @@
-import { ConnectToDatabase } from "@lunar/core/database";
+import { ConnectToDatabase } from "@lunar/core/database/connect";
 import { ApiHandler } from "sst/node/api";
 
 const db = ConnectToDatabase();
 
 export const handler = ApiHandler(async (_evt) => {
+    console.log("1");
     const user = await db
-        .selectFrom("person")
+        .selectFrom("user")
         .selectAll()
         .where("email", "=", "zackzackyack@gmail.com")
         .execute();
+    console.log("2");
 
     if (user.length === 0) {
         return {

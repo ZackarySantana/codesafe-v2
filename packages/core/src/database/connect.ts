@@ -7,7 +7,7 @@ import { RDS } from "sst/node/rds";
 export function ConnectToDatabase() {
     return new Kysely<Database>({
         dialect: new DataApiDialect({
-            mode: "postgres",
+            mode: "mysql",
             driver: {
                 database: RDS.database.defaultDatabaseName,
                 secretArn: RDS.database.secretArn,
