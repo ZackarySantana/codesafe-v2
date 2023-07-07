@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import bcrypt from "bcryptjs";
 import { Kysely, sql } from "kysely";
 
 /**
@@ -20,7 +21,7 @@ export async function up(db) {
         .insertInto("user")
         .values({
             email: "test@test.com",
-            password: "test",
+            password: bcrypt.hashSync("test", bcrypt.genSaltSync(10)),
         })
         .execute();
 }

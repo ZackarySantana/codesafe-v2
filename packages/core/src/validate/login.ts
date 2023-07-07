@@ -12,6 +12,6 @@ export function validateLogin(
 export function comparePassword(
     passwordTest: string,
     passwordHash: string,
-): Promise<boolean> {
-    return bcrypt.compare(passwordTest, passwordHash);
+): boolean {
+    return bcrypt.compareSync(passwordTest, passwordHash);
 }
