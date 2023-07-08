@@ -1,8 +1,8 @@
 ---
+import { Api } from "sst/node/api";
 import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
-const t = import.meta.env.API_URL;
-console.log(t);
+console.log(Api.protected_api);
 ---
 
 <Layout title="Welcome to Astro.">
@@ -16,7 +16,7 @@ console.log(t);
         </p>
         <ul
             role="list"
-            class="text-blue m-3 p-4"
+            class="text-blue m-3 bg-blue-100 p-4"
         >
             <Card
                 href="https://docs.astro.build/"
