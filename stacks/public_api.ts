@@ -7,7 +7,7 @@ export default function PublicAPI({ stack }: StackContext) {
         },
     });
 
-    const api = new Api(stack, "api", {
+    const publicAPI = new Api(stack, "public_api", {
         defaults: {
             function: {
                 bind: [bus],
@@ -25,8 +25,8 @@ export default function PublicAPI({ stack }: StackContext) {
     });
 
     stack.addOutputs({
-        ApiEndpoint: api.url,
+        ApiEndpoint: publicAPI.url,
     });
 
-    return api;
+    return publicAPI;
 }

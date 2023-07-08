@@ -4,7 +4,7 @@ import Authentication from "./authentication";
 export default function ProtectedAPI({ stack }: StackContext) {
     const auth = use(Authentication);
 
-    const api = new Api(stack, "api", {
+    const protectedAPI = new Api(stack, "protected_api", {
         authorizers: {
             userAuth: {
                 type: "lambda",
@@ -23,8 +23,8 @@ export default function ProtectedAPI({ stack }: StackContext) {
     });
 
     stack.addOutputs({
-        ApiEndpoint: api.url,
+        ApiEndpoint: protectedAPI.url,
     });
 
-    return api;
+    return protectedAPI;
 }
