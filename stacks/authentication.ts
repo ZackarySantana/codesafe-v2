@@ -14,10 +14,10 @@ export default function Authentication({ stack }: StackContext) {
             },
         },
         routes: {
-            "POST /login": "packages/functions/src/auth/login.handler",
-            "POST /signup": "packages/functions/src/auth/signup.handler",
+            "POST /login": "packages/functions/src/public/auth/login.handler",
+            "POST /signup": "packages/functions/src/public/auth/signup.handler",
             "POST /authenticate":
-                "packages/functions/src/auth/authenticate.handler",
+                "packages/functions/src/internal/auth/authenticate.handler",
         },
     });
 

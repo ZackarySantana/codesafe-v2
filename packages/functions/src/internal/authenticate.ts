@@ -1,14 +1,12 @@
-import { AuthorizationHandler } from "@lunar/core/ApiHandler";
 import { getToken } from "@lunar/core/auth/user";
+import AuthorizationHandler from "@lunar/core/AuthorizationHandler";
 import { PolicyDocument } from "aws-lambda";
 
 export const handler = AuthorizationHandler(async (_evt) => {
     const [user, authError] = await getToken(_evt.headers?.authorization ?? "");
     if (authError !== undefined) {
-        console.log("error");
-        throw new Error("Unauthorized");
+        throw new Error("Unauthorized. You may have an expired token");
     }
-    console.log("success");
 
     return {
         context: {

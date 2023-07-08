@@ -1,6 +1,6 @@
 import { AstroSite, StackContext, use } from "sst/constructs";
-import API from "./MyStack";
 import Authentication from "./authentication";
+import API from "./protected_api";
 
 export default function CelesteStack({ stack }: StackContext) {
     const api = use(API);

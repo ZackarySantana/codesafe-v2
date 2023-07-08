@@ -1,8 +1,9 @@
 import { SSTConfig } from "sst";
-import API from "./stacks/MyStack";
 import Auth from "./stacks/authentication";
 import CelesteStack from "./stacks/celeste";
 import Database from "./stacks/database";
+import ProtectedAPI from "./stacks/protected_api";
+import PublicAPI from "./stacks/public_api";
 import Secrets from "./stacks/secrets";
 
 export default {
@@ -16,7 +17,8 @@ export default {
         app.stack(Secrets);
         app.stack(Database);
         app.stack(Auth);
-        app.stack(API);
+        app.stack(ProtectedAPI);
+        app.stack(PublicAPI);
         app.stack(CelesteStack);
     },
 } satisfies SSTConfig;
