@@ -1,7 +1,11 @@
 import {
+    APIGatewayAuthorizerEvent,
+    APIGatewayAuthorizerResult,
     APIGatewayProxyEventV2,
     APIGatewayProxyStructuredResultV2,
+    APIGatewayRequestAuthorizerEvent,
     Context,
+    PolicyDocument,
 } from "aws-lambda";
 import { ApiHandler as handler } from "sst/node/api";
 import * as loggerUtil from "./logger";
@@ -36,3 +40,48 @@ const ApiHandler = (
 };
 
 export default ApiHandler;
+
+const AuthorizationHandler = (
+    fun: (
+        _evt: APIGatewayRequestAuthorizerEvent,
+        ctx: Context,
+        logger: typeof loggerUtil,
+    ) => Promise<APIGatewayAuthorizerResult>,
+) => {
+    return async (_evt: APIGatewayAuthorizerEvent, ctx: Context) => {
+        loggerUtil.initAuthorizer(_evt);
+        try {
+            if (_evt.type === "TOKEN") {
+                loggerUtil.flush(new Error("Invalid token type"));
+                throw new Error("Authorization type must be REQUEST");
+            }
+            const e = _evt as APIGatewayRequestAuthorizerEvent;
+            loggerUtil.debug(e);
+            const result = await fun(e, ctx, loggerUtil);
+            /*
+             * If (isErrorStatusCode(result. ?? 0)) {
+             *     loggerUtil.flush(result);
+             * }
+             */
+            return result;
+        } catch (err) {
+            loggerUtil.flush(err);
+            console.log("ERROR 2");
+            return {
+                principalId: "user",
+                policyDocument: {
+                    Version: "2012-10-17",
+                    Statement: [
+                        {
+                            Action: "execute-api:Invoke",
+                            Effect: "Deny",
+                            Resource: _evt.methodArn,
+                        },
+                    ],
+                } satisfies PolicyDocument,
+            };
+        }
+    };
+};
+
+export { AuthorizationHandler };

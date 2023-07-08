@@ -1,5 +1,5 @@
-import { ApiHandler } from "sst/node/api";
 import { Todo } from "@lunar/core/todo";
+import { ApiHandler } from "sst/node/api";
 
 export const create = ApiHandler(async (_evt) => {
     await Todo.create();

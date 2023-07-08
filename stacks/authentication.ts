@@ -21,6 +21,8 @@ export default function Authentication({ stack }: StackContext) {
         },
     });
 
+    auth.getFunction("POST / authenticate");
+
     stack.addOutputs({
         ApiEndpoint: auth.url,
     });

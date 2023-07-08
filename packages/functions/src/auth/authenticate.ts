@@ -1,17 +1,29 @@
-import ApiHandler from "@lunar/core/ApiHandler";
+import { AuthorizationHandler } from "@lunar/core/ApiHandler";
 import { getToken } from "@lunar/core/auth/user";
+import { PolicyDocument } from "aws-lambda";
 
-export const handler = ApiHandler(async (_evt) => {
-    const [user, authError] = await getToken(_evt.headers.authorization ?? "");
+export const handler = AuthorizationHandler(async (_evt) => {
+    const [user, authError] = await getToken(_evt.headers?.authorization ?? "");
     if (authError !== undefined) {
-        return authError;
+        console.log("error");
+        throw new Error("Unauthorized");
     }
+    console.log("success");
 
     return {
-        statusCode: 200,
-        body: JSON.stringify(user),
-        headers: {
-            "Content-Type": "application/json",
+        context: {
+            user: JSON.stringify(user),
         },
+        principalId: "user",
+        policyDocument: {
+            Version: "2012-10-17",
+            Statement: [
+                {
+                    Action: "execute-api:Invoke",
+                    Effect: "Allow",
+                    Resource: _evt.methodArn,
+                },
+            ],
+        } satisfies PolicyDocument,
     };
 });

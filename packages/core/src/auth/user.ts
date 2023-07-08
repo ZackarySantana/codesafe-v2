@@ -1,6 +1,7 @@
 import { Database } from "@lunar/database/database";
 import { User } from "@lunar/database/schemas/user";
 import { ErrorResponse, ReturnOr } from "@lunar/types";
+import { APIGatewayProxyEventV2 } from "aws-lambda";
 import jwt from "jsonwebtoken";
 import { Kysely } from "kysely";
 import { ErrorWrapAsync, ErrorWrapRaw } from "src/utils";
@@ -86,4 +87,26 @@ async function _getToken(
     return [user, undefined];
 }
 
-export const getToken = (t: string) => ErrorWrapAsync(() => _getToken(t));
+type GetTokenParams = Parameters<typeof _getToken>;
+type GetTokenReturn = ReturnType<typeof _getToken>;
+export const getToken: (...args: GetTokenParams) => GetTokenReturn = (
+    t: string,
+) => ErrorWrapAsync(() => _getToken(t));
+
+export const getUserFromEvent = (
+    _evt: APIGatewayProxyEventV2,
+): ReturnOr<User, ErrorResponse> => {
+    try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const authorizer = (_evt.requestContext as any).authorizer;
+        return [JSON.parse(authorizer.lambda.user), undefined];
+    } catch (e) {
+        return [
+            undefined,
+            {
+                statusCode: 500,
+                body: "User not found",
+            },
+        ];
+    }
+};

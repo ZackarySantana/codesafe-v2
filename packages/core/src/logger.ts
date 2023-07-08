@@ -1,4 +1,4 @@
-import { APIGatewayProxyEventV2 } from "aws-lambda";
+import { APIGatewayAuthorizerEvent, APIGatewayProxyEventV2 } from "aws-lambda";
 import AWS from "aws-sdk";
 
 let logs: { date: Date; string: string }[];
@@ -20,6 +20,15 @@ export function init(_evt: APIGatewayProxyEventV2) {
         body: _evt.body,
         pathParameters: _evt.pathParameters,
         queryStringParameters: _evt.queryStringParameters,
+    });
+}
+
+export function initAuthorizer(_evt: APIGatewayAuthorizerEvent) {
+    logs = [];
+
+    debug("Authorizer event", {
+        body: _evt.type,
+        pathParameters: _evt.methodArn,
     });
 }
 
