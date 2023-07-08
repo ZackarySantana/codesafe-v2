@@ -11,11 +11,6 @@ export default function CelesteStack({ stack }: StackContext) {
     const site = new AstroSite(stack, "celeste", {
         path: "celeste",
         bind: [protectedAPI, publicAPI, authentication],
-        environment: {
-            PROTECTED_API_URL: protectedAPI.url,
-            PUBLIC_API_URL: publicAPI.url,
-            AUTHENTICATION_URL: authentication.url,
-        },
     });
 
     stack.addOutputs({

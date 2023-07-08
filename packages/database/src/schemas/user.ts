@@ -13,7 +13,7 @@ export type UserTable = {
     password: string;
 
     created_at: ColumnType<Date, string | undefined, never>;
-}
+};
 
 export type User = Omit<Selectable<UserTable>, "password">;
 export type UserWithPassword = Selectable<UserTable>;

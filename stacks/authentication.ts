@@ -6,7 +6,7 @@ export default function Authentication({ stack }: StackContext) {
     const db = use(Database);
     const { JWT_SECRET, JWT_LIFETIME } = use(Secrets);
 
-    const auth = new Api(stack, "auth-api", {
+    const authAPI = new Api(stack, "auth_api", {
         defaults: {
             function: {
                 bind: [db, JWT_SECRET, JWT_LIFETIME],
@@ -21,11 +21,11 @@ export default function Authentication({ stack }: StackContext) {
         },
     });
 
-    auth.getFunction("POST / authenticate");
+    authAPI.getFunction("POST / authenticate");
 
     stack.addOutputs({
-        ApiEndpoint: auth.url,
+        ApiEndpoint: authAPI.url,
     });
 
-    return auth;
+    return authAPI;
 }
