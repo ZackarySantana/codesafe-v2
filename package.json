@@ -10,7 +10,8 @@
         "remove": "sst remove",
         "console": "sst console",
         "format": "prettier --write .",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "tsc --noEmit",
+        "aws-nuke": "aws-nuke -c aws-nuke.yml --profile lidtop"
     },
     "devDependencies": {
         "@tsconfig/node16": "^16.1.0",

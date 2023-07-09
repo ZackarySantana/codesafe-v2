@@ -1,0 +1,16 @@
+regions:
+    - us-east-1
+    - us-east-2
+
+account-blocklist:
+    - 123456789012
+
+accounts:
+    "123456789012":
+        filters:
+            IAMUser:
+                - "my-user"
+            IAMUserPolicyAttachment:
+                - "my-user -> AdministratorAccess"
+            IAMUserAccessKey:
+                - "my-user -> ABCDEFGHIJKLMNOPQRST"
